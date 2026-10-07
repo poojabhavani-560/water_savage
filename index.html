@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Water Save Campaign - Every Drop Counts, Save Water, Save Life">
+  <title>Water Save Campaign</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <main id="authScreen" class="auth-screen">
+    <div class="auth-art">
+      <div class="drop-orbit">💧</div>
+      <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+      <div class="auth-copy">
+        <p class="eyebrow">WATER SAVE CAMPAIGN</p>
+        <h1>Every Drop Counts.<br><span>Save Water, Save Life.</span></h1>
+        <p>Learn, calculate, save and make every drop matter.</p>
+      </div>
+      <img src="assets/images/save-water-poster.png" alt="Save Water Save Life poster">
+    </div>
+    <div class="auth-panel">
+      <div class="brand-mini"><span>💧</span> WaterSave</div>
+      <div id="loginFormWrap">
+        <h2>Welcome back!</h2>
+        <p class="muted">Login to continue your water-saving journey.</p>
+        <form id="loginForm" novalidate>
+          <label>Email or Phone<input id="loginIdentifier" type="text" autocomplete="username" required></label>
+          <label>Password<input id="loginPassword" type="password" autocomplete="current-password" required></label>
+          <button class="btn primary full" type="submit">Login</button>
+          <p id="loginError" class="form-error" role="alert"></p>
+        </form>
+        <p class="switch-auth">New here? <button type="button" class="link-btn" id="showRegister">Create an account</button></p>
+      </div>
+      <div id="registerFormWrap" class="hidden">
+        <h2>Create account</h2>
+        <p class="muted">Start your personal water conservation journey.</p>
+        <form id="registerForm" novalidate>
+          <label>Full Name<input id="regName" type="text" required></label>
+          <label>Email or Phone<input id="regIdentifier" type="text" required></label>
+          <label>Password<input id="regPassword" type="password" required minlength="6"></label>
+          <label>Confirm Password<input id="regConfirm" type="password" required></label>
+          <button class="btn primary full" type="submit">Register</button>
+          <p id="registerError" class="form-error" role="alert"></p>
+        </form>
+        <p class="switch-auth">Already have an account? <button type="button" class="link-btn" id="showLogin">Login</button></p>
+      </div>
+    </div>
+  </main>
+
+  <div id="appShell" class="app-shell hidden">
+    <header class="topbar">
+      <button class="brand" data-section="home" aria-label="Go to Home"><span>💧</span><strong>WaterSave</strong></button>
+      <button id="menuToggle" class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav id="mainNav" aria-label="Main navigation">
+        <button data-section="home">Home</button>
+        <button data-section="dashboard">Dashboard</button>
+        <button data-section="calculator">Calculate Water</button>
+        <button data-section="tips">Saving Tips</button>
+        <button data-section="goals">Saving Goals</button>
+        <button data-section="quiz">Quiz</button>
+        <button data-section="gallery">Gallery</button>
+        <button data-section="progress">Progress</button>
+        <button data-section="profile">Profile</button>
+        <button id="logoutBtn" class="logout-nav">Logout</button>
+      </nav>
+    </header>
+
+    <div class="page-shell">
+      <section id="home" class="page-section">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">SMART WATER CONSERVATION</p>
+            <h1>Welcome, <span id="welcomeName">Friend</span>! 🌊</h1>
+            <h2>WATER SAVE CAMPAIGN</h2>
+            <p class="hero-tagline">“Every Drop Counts – Save Water, Save Life”</p>
+            <p class="hero-text">Turn everyday actions into measurable water-saving habits. Track your usage, set goals, learn practical tips and inspire better water-saving habits.</p>
+            <div class="hero-actions">
+              <button class="btn primary" data-section="calculator">Calculate My Water</button>
+              <button class="btn secondary" data-section="tips">Start Saving</button>
+              <button class="btn ghost" data-section="quiz">Take Quiz</button>
+            </div>
+          </div>
+          <div class="hero-visual"><img src="assets/images/save-water-poster.png" alt="Colorful water conservation poster"></div>
+        </div>
+        <div class="feature-grid">
+          <button class="feature-card" data-section="calculator"><span>💧</span><b>Calculate Water</b><small>Measure your daily use</small></button>
+          <button class="feature-card" data-section="tips"><span>🌱</span><b>Saving Tips</b><small>30+ practical ideas</small></button>
+          <button class="feature-card" data-section="goals"><span>🎯</span><b>Saving Goals</b><small>Build measurable habits</small></button>
+          <button class="feature-card" data-section="quiz"><span>🧠</span><b>Water Quiz</b><small>Test your knowledge</small></button>
+          <button class="feature-card" data-section="progress"><span>📊</span><b>My Progress</b><small>See your impact</small></button>
+        </div>
+      </section>
+
+      <section id="dashboard" class="page-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">YOUR OVERVIEW</p><h2>Dashboard</h2><p class="muted">A quick look at your water-saving journey.</p></div><button class="btn secondary" data-section="calculator">+ Log Usage</button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span>💧</span><small>Today's Water Usage</small><strong id="dashToday">0 L</strong></article>
+          <article class="stat-card"><span>📅</span><small>Weekly Usage</small><strong id="dashWeek">0 L</strong></article>
+          <article class="stat-card"><span>🌿</span><small>Water Saved</small><strong id="dashSaved">0 L</strong></article>
+          <article class="stat-card"><span>🎯</span><small>Active Goal</small><strong id="dashGoal">No goal</strong></article>
+          <article class="stat-card"><span>🧠</span><small>Best Quiz Score</small><strong id="dashQuiz">0/10</strong></article>
+        </div>
+        <div class="dashboard-lower">
+          <article class="card">
+            <div class="card-head"><h3>Usage trend</h3><span class="pill">Last 7 days</span></div>
+            <div id="usageChart" class="bar-chart" aria-label="Water usage bar chart"></div>
+          </article>
+          <article class="card highlight-card">
+            <p class="eyebrow">TODAY'S REMINDER</p>
+            <h3>Small habits create big change.</h3>
+            <p>Turn off taps while brushing, repair leaks quickly and reuse suitable household water for plants.</p>
+            <button class="btn primary" data-section="tips">View Saving Tips</button>
+          </article>
+        </div>
+      </section>
+
+      <section id="calculator" class="page-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">MEASURE YOUR IMPACT</p><h2>Water Calculator</h2><p class="muted">Enter litres used for each activity. Daily usage is the total of all entries.</p></div></div>
+        <div class="calculator-layout">
+          <form id="calculatorForm" class="card activity-form">
+            <div id="activityInputs" class="activity-grid"></div>
+            <button class="btn primary full" type="submit">Calculate & Save Usage</button>
+          </form>
+          <div>
+            <div class="usage-results">
+              <article class="result-card"><small>Daily Usage</small><strong id="dailyResult">0 L</strong></article>
+              <article class="result-card"><small>Weekly Usage</small><strong id="weeklyResult">0 L</strong></article>
+              <article class="result-card"><small>Monthly Usage</small><strong id="monthlyResult">0 L</strong></article>
+            </div>
+            <div class="card history-card"><div class="card-head"><h3>Usage History</h3><button id="clearUsage" class="text-danger">Clear history</button></div><div id="usageHistory"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tips" class="page-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">LEARN & ACT</p><h2>Water Saving Tips</h2><p class="muted"><span id="tipCompletedCount">0</span> tips completed</p></div><button id="randomTipBtn" class="btn primary">✨ Show Random Tip</button></div>
+        <article id="featuredTip" class="featured-tip card"></article>
+        <div id="tipsGrid" class="tips-grid"></div>
+      </section>
+
+      <section id="goals" class="page-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">MAKE A COMMITMENT</p><h2>Water Saving Goals</h2><p class="muted">Create a target and track your progress.</p></div><button id="openGoalForm" class="btn primary">+ Add Goal</button></div>
+        <form id="goalForm" class="card hidden goal-form">
+          <div class="form-grid">
+            <label>Goal Name<input id="goalName" required placeholder="e.g. Save Water at Home"></label>
+            <label>Target Litres<input id="goalTarget" type="number" min="1" required placeholder="50"></label>
+            <label>Start Date<input id="goalStart" type="date" required></label>
+            <label>Target Date<input id="goalDate" type="date" required></label>
+          </div>
+          <input id="editingGoalId" type="hidden">
+          <div class="form-actions"><button type="submit" class="btn primary">Save Goal</button><button type="button" id="cancelGoal" class="btn ghost">Cancel</button></div>
+        </form>
+        <div id="goalsList" class="goals-list"></div>
+      </section>
+
+      <section id="quiz" class="page-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">TEST YOUR KNOWLEDGE</p><h2>Water Conservation Quiz</h2><p class="muted">Every quiz contains 10 randomly selected questions with randomized options.</p></div><button id="startQuizBtn" class="btn primary">Start Fresh Quiz</button></div>
+        <div id="quizIntro" class="card quiz-intro"><span class="big-icon">🧠</span><h3>Ready for a fresh challenge?</h3><p>Choose the best answer for each question. You will see an explanation after finishing.</p><button class="btn secondary" id="startQuizBtn2">Start Quiz</button></div>
+        <div id="quizArea" class="card hidden"></div>
+        <div id="quizResult" class="card hidden"></div>
+      </section>
+
+      <section id="gallery" class="page-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">VISUAL AWARENESS</p><h2>Water Awareness Gallery</h2><p class="muted">Colorful water-saving posters and pamphlets.</p></div></div>
+        <div id="galleryGrid" class="gallery-grid">
+          <article class="gallery-card card"><img src="assets/images/save-water-poster.png" alt="Save Water, Save Life poster" loading="lazy"><div class="gallery-copy"><h3>SAVE WATER, SAVE LIFE</h3><p>Every drop is a precious part of tomorrow.</p><button class="btn secondary" onclick="openModal('assets/images/save-water-poster.png','SAVE WATER, SAVE LIFE','Every drop is a precious part of tomorrow.')">View Poster</button></div></article>
+          <article class="gallery-card card"><img src="assets/images/every-drop-counts.png" alt="Every Drop Counts poster" loading="lazy"><div class="gallery-copy"><h3>EVERY DROP COUNTS</h3><p>Small changes can reduce unnecessary water waste.</p><button class="btn secondary" onclick="openModal('assets/images/every-drop-counts.png','EVERY DROP COUNTS','Small changes can reduce unnecessary water waste.')">View Poster</button></div></article>
+          <article class="gallery-card card"><img src="assets/images/stop-water-wastage.png" alt="Stop Water Wastage poster" loading="lazy"><div class="gallery-copy"><h3>STOP WATER WASTAGE</h3><p>Notice leaks and avoid unnecessary running water.</p><button class="btn secondary" onclick="openModal('assets/images/stop-water-wastage.png','STOP WATER WASTAGE','Notice leaks and avoid unnecessary running water.')">View Poster</button></div></article>
+          <article class="gallery-card card"><img src="assets/images/make-every-drop-matter.png" alt="Make Every Drop Matter poster" loading="lazy"><div class="gallery-copy"><h3>MAKE EVERY DROP MATTER</h3><p>Measure your use, set a goal and build better habits.</p><button class="btn secondary" onclick="openModal('assets/images/make-every-drop-matter.png','MAKE EVERY DROP MATTER','Measure your use, set a goal and build better habits.')">View Poster</button></div></article>
+          <article class="gallery-card card"><img src="assets/images/protect-water.png" alt="Protect Water for Future Generations poster" loading="lazy"><div class="gallery-copy"><h3>PROTECT WATER FOR FUTURE GENERATIONS</h3><p>Responsible water management is a shared responsibility.</p><button class="btn secondary" onclick="openModal('assets/images/protect-water.png','PROTECT WATER FOR FUTURE GENERATIONS','Responsible water management is a shared responsibility.')">View Poster</button></div></article>
+          <article class="gallery-card card"><img src="assets/images/use-water-responsibly.png" alt="Use Water Responsibly poster" loading="lazy"><div class="gallery-copy"><h3>USE WATER RESPONSIBLY</h3><p>Save water today so communities can meet future needs.</p><button class="btn secondary" onclick="openModal('assets/images/use-water-responsibly.png','USE WATER RESPONSIBLY','Save water today so communities can meet future needs.')">View Poster</button></div></article>
+        </div>
+      </section>
+
+      <section id="progress" class="page-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">SEE YOUR IMPACT</p><h2>My Progress</h2><p class="muted">Your activity is saved separately for your account.</p></div></div>
+        <div id="progressStats" class="stats-grid"></div>
+        <div class="progress-layout"><div class="card"><h3>Conservation indicators</h3><div id="progressBars"></div></div><div class="card"><h3>Keep going 🌱</h3><p>Complete tips, finish goals and keep recording usage to build a clearer picture of your habits.</p><button class="btn primary" data-section="tips">Find a New Tip</button></div></div>
+      </section>
+
+      <section id="profile" class="page-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">YOUR ACCOUNT</p><h2>Profile</h2><p class="muted">Manage your name and view your campaign statistics.</p></div></div>
+        <div class="profile-layout">
+          <div class="profile-card card"><div class="avatar" id="profileAvatar">P</div><h3 id="profileName">User</h3><p id="profileIdentifier" class="muted"></p><button id="editProfileBtn" class="btn primary">Edit Profile</button></div>
+          <div class="card"><div class="profile-stats" id="profileStats"></div></div>
+        </div>
+        <form id="profileForm" class="card hidden profile-form"><label>Full Name<input id="profileNameInput" required></label><div class="form-actions"><button class="btn primary">Save Changes</button><button type="button" id="cancelProfile" class="btn ghost">Cancel</button></div></form>
+        <div class="card security-note"><h3>Your account privacy</h3><p>Your saved water goals, calculations and quiz progress are kept separately for your account in this browser.</p><p><strong>Password is never displayed on this profile page.</strong></p></div>
+      </section>
+    </div>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Preview">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-box"><button id="modalClose" class="modal-close" aria-label="Close">×</button><img id="modalImage" src="" alt=""><h3 id="modalTitle"></h3><p id="modalText"></p></div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/tips.js"></script>
+  <script src="js/goals.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
